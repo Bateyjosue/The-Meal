@@ -104,3 +104,6 @@ dist
 .tern-port
 
 copy_github_board.sh
+
+#Node Modules
+node_modules/
