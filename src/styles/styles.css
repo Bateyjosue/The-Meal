@@ -17,7 +17,7 @@ header ul {
   width: 80%;
   margin: 0 auto;
   list-style-type: none;
-  padding-top: .6rem;
+  padding-top: 0.6rem;
 }
 
 header ul li a {
@@ -25,6 +25,6 @@ header ul li a {
   color: #060d30;
 }
 
-header ul li a span{
+header ul li a span {
   font-size: 2.5rem;
 }
