@@ -1,0 +1,25 @@
+{
+  "name": "javascript-capstone",
+  "version": "1.0.0",
+  "description": "javascript-capstone",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bateyjosue/javascript-capstone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bateyjosue/javascript-capstone/issues"
+  },
+  "homepage": "https://github.com/Bateyjosue/javascript-capstone#readme",
+  "devDependencies": {
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  }
+}
