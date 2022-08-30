@@ -194,3 +194,24 @@ footer {
   font-size: 0.4px;
   opacity: 0;
 }
+.popup-Images{
+  width:auto;
+  height: 175px;
+  border: 15px rgb(255, 0, 72);
+  border-radius: 5px;
+}
+.popup-Tags{
+  color: #ddd;
+  font-size: 1.5rem;
+}
+.popup-body{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0 0 0.5rem;
+  outline: 1px solid #ddd;
+  outline-style: dashed;
+  background-color: rgba(0,0,0,0.4);
+}

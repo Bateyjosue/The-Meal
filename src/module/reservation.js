@@ -17,15 +17,13 @@ const showReservations = (e) => {
     popup.innerHTML = `
     <div class="popup-inner">
         <article class="popup-header">
-            <h2>${mealName}</h2>
+            <h2 class ="mealName">${mealName}</h2>
             <span class="material-symbols-outlined">close</span>
         </article>
         <article class="popup-body">
-            <img class = "popup Images" src="${mealImage}" alt="Food Image">
-            <p class = "popup-Tags">${tags}</p>
+            <img class = "popup-Images" src="${mealImage}" alt="Food Image">
+            <p class = "popup-Tags"> -Tags : ${tags}</p>
 
-       </article>
-       <article class = "Current-Reservations">
        </article>
        <article class"popup-footer">
          <h3 id ="headForm"> Make a Reservation </h3>
@@ -45,7 +43,7 @@ const showReservations = (e) => {
   popup.style.position = 'fixed';
   popup.style.top = '0';
   popup.style.left = '0';
-  popup.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  popup.style.backgroundColor = 'rgba(0,0,0,0.3)';
   popup.style.zIndex = '1';
   popup.style.display = 'flex';
   popup.style.alignItems = 'center';
@@ -53,6 +51,6 @@ const showReservations = (e) => {
   popup.style.flexDirection = 'column';
   popup.style.padding = '20px';
   popup.style.borderRadius = '10px';
-  popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.5)';
+  popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.3)';
 };
 module.exports = showReservations;
