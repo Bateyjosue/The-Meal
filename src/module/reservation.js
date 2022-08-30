@@ -1,15 +1,32 @@
-const showReservations = () => {
-  // create a popup to show Reservations on a particular ID
+const showReservations = (e) => {
   const popup = document.createElement('div');
-  popup.classList.add('popup');
-  popup.innerHTML = `
+  const idMeal = e.target.parentElement.parentElement.children[0].children[0].innerHTML;
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;
+  const getData = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  };
+  const lookup = getData();
+  lookup.then((data) => {
+    const mealName = data.meals[0].strMeal;
+    const mealImage = data.meals[0].strMealThumb;
+    const tags = data.meals[0].strTags;
+
+    popup.classList.add('popup');
+    popup.innerHTML = `
     <div class="popup-inner">
-        <div class="popup-header">
-            <h2>Reservations</h2>
+        <article class="popup-header">
+            <h2>${mealName}</h2>
             <span class="material-symbols-outlined">close</span>
-        </div>
-        <div class="popup-body">
-       </div>
+        </article>
+        <article class="popup-body">
+            <img class = "popup Images" src="${mealImage}" alt="Food Image">
+            <p class = "popup-Tags">${tags}</p>
+
+       </article>
+       <article class = "Current-Reservations">
+       </article>
        <article class"popup-footer">
          <h3 id ="headForm"> Make a Reservation </h3>
          <form class="form-inline">
@@ -21,6 +38,7 @@ const showReservations = () => {
             <button type = "submit" class="btn btn-primary" id="submitReservation">Reserve!</button>
 
     `;
+  });
   document.body.appendChild(popup);
   popup.style.height = '100%';
   popup.style.width = '100%';

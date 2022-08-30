@@ -9,7 +9,8 @@ getData().then((data) => {
     card.innerHTML += `
     <li>
           <div class="card-image">
-            <img src="${item.strMealThumb}" alt="">
+          <p class = "hideMe">${item.idMeal}</p>
+            <img src="${item.strMealThumb}" alt="Food Image">
           </div>
           <div class="card-title">
             <span><h2>${item.strMeal}</h2></span>
@@ -26,7 +27,7 @@ getData().then((data) => {
   const reservation = document.querySelectorAll('.btn-primary');
   reservation.forEach((item) => {
     item.addEventListener('click', (e) => {
-      showReservations();
+      showReservations(e);
     });
   });
 });

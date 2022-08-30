@@ -190,3 +190,7 @@ footer {
   color: rgb(255, 0, 72);
   background-color: white;
 }
+.hideMe{
+  font-size: 0.4px;
+  opacity: 0;
+}
