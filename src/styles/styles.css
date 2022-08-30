@@ -202,7 +202,7 @@ footer {
   gap: 1rem;
 }
 
-.comment {
+.comment-card {
   gap: 0.5rem;
   box-shadow: 0 0 10px rgba(200, 200, 200, 0.5);
   border-radius: 10px;

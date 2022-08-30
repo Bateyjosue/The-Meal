@@ -60,9 +60,9 @@ const generateComments = () => {
   const comments = document.createElement('div');
   comments.classList.add('comments');
   comments.classList.add('flex-column');
-  commentList.forEach((comment) => {
+  commentList.forEach((commentItem) => {
     const commentCard = document.createElement('div');
-    commentCard.classList.add('comment');
+    commentCard.classList.add('comment-card');
     commentCard.classList.add('flex-column');
     const commentHeader = document.createElement('div');
     const date = document.createElement('span');
@@ -70,17 +70,17 @@ const generateComments = () => {
     const message = document.createElement('div');
 
     date.classList.add('date');
-    date.textContent = comment.creation_date;
+    date.textContent = commentItem.creation_date;
 
     name.classList.add('name');
-    name.textContent = ` | By ${comment.username}`;
+    name.textContent = ` | By ${commentItem.username}`;
 
     commentHeader.classList.add('comment-header');
     commentHeader.appendChild(date);
     commentHeader.appendChild(name);
 
     message.classList.add('message');
-    message.textContent = comment.comment;
+    message.textContent = commentItem.comment;
 
     commentCard.appendChild(commentHeader);
     commentCard.appendChild(message);
