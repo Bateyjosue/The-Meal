@@ -16,8 +16,8 @@ getData().then((data) => {
             <span>5 likes</span>
           </div>
           <div class="card-footer">
-            <span>Comments</span>
-            <span>Reservations</span>
+            <span><button>Comments<button></span>
+            <span><button id = "Reserve">Reservations</button></span>
           </div>
         </li>
     `;
