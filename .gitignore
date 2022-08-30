@@ -107,3 +107,6 @@ copy_github_board.sh
 
 #Node Modules
 node_modules/
+
+#Test Coverage
+coverage/

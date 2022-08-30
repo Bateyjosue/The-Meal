@@ -28,3 +28,26 @@ header ul li a {
 header ul li a span {
   font-size: 2.5rem;
 }
+
+/* Footer Styles */
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-shadow: 5px -5px 5px #ddd;
+}
+
+.copyright {
+  margin: 0 auto;
+}
+
+.copyright span {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
