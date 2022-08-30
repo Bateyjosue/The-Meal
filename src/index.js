@@ -5,11 +5,9 @@ import getData from './module/data.js';
 const card = document.querySelector('.list-items .card');
 getData().then((data) => {
   data.meals.forEach((item) => {
-    console.log(item);
     card.innerHTML += `
-    <li>
+    <li id="${item.idMeal}">
           <div class="card-image">
-          <p class=hideMe>${item.idMeal}</p>
             <img src="${item.strMealThumb}" alt="${item.strMeal}">
           </div>
           <div class="card-title">
@@ -18,8 +16,8 @@ getData().then((data) => {
             <span>5 likes</span>
           </div>
           <div class="card-footer">
-            <button id="comment">Comments<button>
-            <button id = "Reserve">Reservations</button>
+            <button type="button" class="comment">Comments<button>
+            <button type="button" id="Reserve">Reservations</button>
           </div>
         </li>
     `;
