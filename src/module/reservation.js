@@ -11,7 +11,7 @@ const showReservations = () => {
         <div class="popup-body">
        </div>
        <article class"popup-footer">
-         <h3> Make a Reservation </h3>
+         <h3 id ="headForm"> Make a Reservation </h3>
          <form class="form-inline">
          <input type="name" class="form-control" placeholder="Your Name"></input>
          <label for="date">Start Date</label>
