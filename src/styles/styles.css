@@ -134,3 +134,14 @@ footer {
 .copyright {
   margin: 0 auto;
 }
+.popup-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto;
+  list-style-type: none;
+  padding-top: 0.6rem;
+  color: aliceblue;
+  font-size: 1.5rem;
+}

@@ -22,5 +22,19 @@ const showReservations = () => {
 
     `;
   document.body.appendChild(popup);
+  popup.style.height = '100%';
+  popup.style.width = '100%';
+  popup.style.position = 'fixed';
+  popup.style.top = '0';
+  popup.style.left = '0';
+  popup.style.backgroundColor = 'rgba(0,0,0,0.5)';
+  popup.style.zIndex = '1';
+  popup.style.display = 'flex';
+  popup.style.alignItems = 'center';
+  popup.style.justifyContent = 'center';
+  popup.style.flexDirection = 'column';
+  popup.style.padding = '20px';
+  popup.style.borderRadius = '10px';
+  popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.5)';
 };
 module.exports = showReservations;

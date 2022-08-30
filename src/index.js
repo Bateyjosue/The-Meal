@@ -25,6 +25,8 @@ getData().then((data) => {
   });
   const reservation = document.querySelectorAll('.btn-primary');
   reservation.forEach((item) => {
-    item.addEventListener('click', showReservations);
+    item.addEventListener('click', (e) => {
+      showReservations();
+    });
   });
 });
