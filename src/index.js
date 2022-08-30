@@ -1,6 +1,6 @@
 import './styles/styles.css';
 
-import { getData } from './module/data.js';
+import getData from './module/data.js';
 
 const card = document.querySelector('.list-items .card');
 getData().then((data) => {
@@ -11,7 +11,7 @@ getData().then((data) => {
             <img src="${item.strMealThumb}" alt="">
           </div>
           <div class="card-title">
-            <span><h3>${item.strMeal}</h3></span>
+            <span><h2>${item.strMeal}</h2></span>
             <span class="material-symbols-outlined">favorite</span>
             <span>5 likes</span>
           </div>
