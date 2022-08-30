@@ -2,6 +2,7 @@ import './styles/styles.css';
 
 import getData from './module/data.js';
 import showReservations from './module/reservation.js';
+
 const card = document.querySelector('.list-items .card');
 getData().then((data) => {
   data.meals.forEach((item) => {
