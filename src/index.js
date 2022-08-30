@@ -13,5 +13,8 @@ body.addEventListener('click', (event) => {
         const data = response.meals;
         body.appendChild(createCommentPop(mealId, data));
       });
+  } else if (event.target.classList.contains('close')) {
+    const commentBox = document.querySelector('dialog');
+    body.removeChild(commentBox);
   }
 });
