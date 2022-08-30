@@ -1,7 +1,7 @@
 import './styles/styles.css';
 
 import getData from './module/data.js';
-
+import showReservations from './module/reservation.js';
 const card = document.querySelector('.list-items .card');
 getData().then((data) => {
   data.meals.forEach((item) => {
@@ -16,10 +16,14 @@ getData().then((data) => {
             <span>5 likes</span>
           </div>
           <div class="card-footer">
-            <span><button>Comments<button></span>
-            <span><button id = "Reserve">Reservations</button></span>
+            <button>Comments<button>
+            <button class = "Reserve btn btn-primary">Reservations</button>
           </div>
         </li>
     `;
+  });
+  const reservation = document.querySelectorAll('.btn-primary');
+  reservation.forEach((item) => {
+    item.addEventListener('click', showReservations);
   });
 });

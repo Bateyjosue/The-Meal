@@ -21,4 +21,6 @@ const showReservations = () => {
             <button type = "submit" class="btn btn-primary" id="submitReservation">Reserve!</button>
 
     `;
+  document.body.appendChild(popup);
 };
+module.exports = showReservations;
