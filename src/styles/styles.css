@@ -141,6 +141,10 @@ footer {
 .copyright {
   margin: 0 auto;
 }
+.hideMe{
+  font-size: 0.4px;
+  opacity: 0;
+}
 
 @media screen and (min-width: 768px) {
   header ul li:nth-child(2),
