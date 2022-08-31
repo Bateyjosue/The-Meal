@@ -44,19 +44,20 @@ const showReservations = (e) => {
        </article>
        <article class = "popup-footer">
          <h3 id ="headForm"> Make a Reservation </h3>
-         <form class="form-inline">
-         <input type="name" class="form-control" placeholder="Your Name"></input>
-         <label for="date">Start Date</label>
-            <input type="date" class="form-control" id="start-date"></input>
-            <label for="date">End Date</label>
-            <input type = "date" class="form-control" id="end-date"></input>
-            <button type = "submit" class="btn btn-primary" id="submitReservation">Reserve!</button>
-
+            <form class="form-inline" id = "makeRes">
+                <input type="name" class="form-control" placeholder="Your Name" !required></input>
+                <label for="date">Start Date</label>
+                <input type="date" class="form-control" id="start-date" !required></input>
+                <label for="date">End Date</label>
+                <input type = "date" class="form-control" id="end-date" !required></input>
+                <button type = "submit" class="btn btn-primary" id="submitReservation">Reserve!</button>
+            </form>
+        </article>
     `;
     const currentReservations = document.createElement('ul');
     currentReservations.classList.add('res');
     const form = document.querySelector('.popup-footer');
-    const inner = document.querySelector('.popup-inner')
+    const inner = document.querySelector('.popup-inner');
     inner.insertBefore(currentReservations, form);
     const url2 = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FXMctN9lLmEpmOxXkx1x/reservations?item_id=${idMeal}`;
     const getRes = async () => {
@@ -71,6 +72,40 @@ const showReservations = (e) => {
         `;
       }
     }));
+    const from = document.querySelector('#makeRes');
+    from.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.querySelector('#makeRes input[type="name"]').value;
+      const start = document.querySelector('#makeRes input[type="date"]').value;
+      const end = document.querySelector('#makeRes input[type="date"]').value;
+      const url3 = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FXMctN9lLmEpmOxXkx1x/reservations';
+      const postRes = async () => {
+        const res = await fetch(url3, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            item_id: idMeal,
+            username: name,
+            date_start: start,
+            date_end: end,
+          }),
+        });
+        const info = await res.json();
+        return info;
+      };
+      postRes();
+      const success = document.createElement('div');
+      success.classList.add('successMessage');
+      success.innerHTML = 'Your Reservation Was Made ';
+      const form = document.querySelector('.form-inline');
+      form.appendChild(success);
+      setTimeout(() => {
+        form.removeChild(success);
+      },
+      2000);
+    });
     const end = document.querySelector('#end');
     end.addEventListener('click', () => {
       document.querySelector('body').removeChild(popup);
