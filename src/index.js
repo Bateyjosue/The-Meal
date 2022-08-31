@@ -2,7 +2,7 @@ import './styles/styles.css';
 
 import getData from './module/data.js';
 import createCommentPop from './module/comment_display_generation.js';
-import getMeals from './module/comment_api_functions.js';
+import { getMeals, postComment } from './module/comment_api_functions.js';
 
 const card = document.querySelector('.list-items .card');
 const body = document.querySelector('body');
@@ -36,9 +36,14 @@ body.addEventListener('click', (event) => {
       .then((response) => {
         const data = response.meals;
         body.appendChild(createCommentPop(mealId, data));
+        const addComment = document.querySelector('.comment-btn');
+        addComment.addEventListener('click', (event) => {
+          event.preventDefault();
+          postComment();
+        });
       });
   } else if (event.target.classList.contains('close')) {
-    const commentBox = document.querySelector('dialog');
+    const commentBox = document.querySelector('.modal-container');
     body.removeChild(commentBox);
   }
 });
