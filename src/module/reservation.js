@@ -110,8 +110,9 @@ const showReservations = (e) => {
       form.appendChild(success);
       setTimeout(() => {
         form.removeChild(success);
+        window.location.reload();
       },
-      2000);
+      3000);
     });
     const end = document.querySelector('#end');
     end.addEventListener('click', () => {
