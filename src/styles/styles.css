@@ -330,7 +330,7 @@ footer {
 
 .comments {
   padding: 1rem 2rem;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .comment-card {
@@ -339,6 +339,7 @@ footer {
   border-radius: 10px;
   padding: 0.5rem;
   background: #44444420;
+  font-size: 0.7rem;
 }
 
 .comment-header {
@@ -381,12 +382,40 @@ footer {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   font-weight: 600;
   transition: all 0.3s ease-in-out;
+  color: #000;
 }
 
 .comment-btn:hover {
   background: #fff;
   color: #000;
   font-weight: bolder;
+}
+
+.submit-box {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.response-message {
+  text-align: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+}
+
+.red {
+  color: red;
+}
+
+.green {
+  color: green;
+}
+
+.hide-message {
+  display: none;
 }
 
 @media (max-width: 1000px) {
