@@ -3,6 +3,7 @@ import './styles/styles.css';
 import getData from './module/data.js';
 import createCommentPop from './module/comment_display_generation.js';
 import { getMeals, postComment } from './module/comment_api_functions.js';
+import { commentAddSuccess, commentAddError } from './module/comment_response_messages.js';
 
 const card = document.querySelector('.list-items .card');
 const body = document.querySelector('body');
@@ -39,7 +40,14 @@ body.addEventListener('click', (event) => {
         const addComment = document.querySelector('.comment-btn');
         addComment.addEventListener('click', (event) => {
           event.preventDefault();
-          postComment();
+          postComment()
+            .then((response) => {
+              if (response.status === 201) {
+                commentAddSuccess();
+              } else if (response === 0) {
+                commentAddError();
+              }
+            });
         });
       });
   } else if (event.target.classList.contains('close')) {
