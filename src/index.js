@@ -1,8 +1,12 @@
 import './styles/styles.css';
 
 import getData from './module/data.js';
+import createCommentPop from './module/comment_display_generation.js';
+import getMeals from './module/comment_api_functions.js';
 
 const card = document.querySelector('.list-items .card');
+const body = document.querySelector('body');
+
 getData().then((data) => {
   data.meals.forEach((item) => {
     card.innerHTML += `
@@ -22,4 +26,19 @@ getData().then((data) => {
         </li>
     `;
   });
+});
+
+body.addEventListener('click', (event) => {
+  if (event.target.classList.contains('comment')) {
+    const mealCard = event.target.parentElement.parentElement;
+    const mealId = mealCard.id;
+    getMeals()
+      .then((response) => {
+        const data = response.meals;
+        body.appendChild(createCommentPop(mealId, data));
+      });
+  } else if (event.target.classList.contains('close')) {
+    const commentBox = document.querySelector('dialog');
+    body.removeChild(commentBox);
+  }
 });
