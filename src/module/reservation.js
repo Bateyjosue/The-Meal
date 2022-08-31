@@ -53,6 +53,28 @@ const showReservations = (e) => {
             <button type = "submit" class="btn btn-primary" id="submitReservation">Reserve!</button>
 
     `;
+    const currentReservations = document.createElement('ul');
+    currentReservations.classList.add('res');
+    popup.appendChild(currentReservations);
+    const url2 = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FXMctN9lLmEpmOxXkx1x/reservations?item_id=${idMeal}`;
+    const getRes = async () => {
+      const res = await fetch(url2);
+      const info = await res.json();
+      return info;
+    };
+    getRes().then((res) => res.forEach((item) => {
+      if (item) {
+        currentReservations.innerHTML += `
+         <li>${item.username} Made a Reservation on ${item.date_start} till ${item.date_end}</li>
+        `;
+      } else {
+        currentReservations.innerHTML += `
+            <div class="Throw-Error">
+             <h3> There are no Current Reservations For this Item!</h3>
+             </div>
+             `;
+      }
+    }));
     const end = document.querySelector('#end');
     end.addEventListener('click', () => {
       document.querySelector('body').removeChild(popup);
