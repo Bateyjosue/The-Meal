@@ -4,7 +4,6 @@ import showReservations from './module/reservation.js';
 import createCommentPop from './module/comment_display_generation.js';
 import getMeals from './module/comment_api_functions.js';
 
-
 const card = document.querySelector('.list-items .card');
 const body = document.querySelector('body');
 
