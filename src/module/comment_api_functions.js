@@ -33,3 +33,11 @@ export const postComment = async () => {
   }
   return (0);
 };
+
+export const getComment = async (mealID) => {
+  const getCommentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiID}/comments?item_id=${mealID}`;
+  const request = new Request(getCommentUrl);
+  const response = await fetch(request);
+  const responseText = await response.json();
+  return responseText;
+};

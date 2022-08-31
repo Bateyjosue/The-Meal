@@ -1,7 +1,7 @@
 import './styles/styles.css';
 
 import getData from './module/data.js';
-import createCommentPop from './module/comment_display_generation.js';
+import { createCommentPop, displayComments } from './module/comment_display_generation.js';
 import { getMeals, postComment } from './module/comment_api_functions.js';
 import { commentAddSuccess, commentAddError } from './module/comment_response_messages.js';
 
@@ -37,12 +37,14 @@ body.addEventListener('click', (event) => {
       .then((response) => {
         const data = response.meals;
         body.appendChild(createCommentPop(mealId, data));
+        displayComments(mealId);
         const addComment = document.querySelector('.comment-btn');
         addComment.addEventListener('click', (event) => {
           event.preventDefault();
           postComment()
             .then((response) => {
               if (response.status === 201) {
+                displayComments(mealId);
                 commentAddSuccess();
               } else if (response === 0) {
                 commentAddError();

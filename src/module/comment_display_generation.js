@@ -1,4 +1,5 @@
-import commentList from './mock_comments.js';
+import { getComment } from './comment_api_functions.js';
+import { noCommentError } from './comment_response_messages.js';
 
 const generateInfo = (data) => {
   const details = document.createElement('div');
@@ -39,12 +40,18 @@ const generateInfo = (data) => {
   tagTitle.classList.add('tag-title');
   tagTitle.innerHTML = 'Meal Tags';
   tags.classList.add('tags');
-  const tagArray = data.strTags.split(',');
-  tagArray.forEach((tag) => {
+  if (data.strTags === null) {
     const tagList = document.createElement('li');
-    tagList.innerHTML = tag;
+    tagList.innerHTML = 'No tags';
     tags.appendChild(tagList);
-  });
+  } else {
+    const tagArray = data.strTags.split(',');
+    tagArray.forEach((tag) => {
+      const tagList = document.createElement('li');
+      tagList.innerHTML = tag;
+      tags.appendChild(tagList);
+    });
+  }
   rightDetail.classList.add('right');
   rightDetail.classList.add('flex-column');
   rightDetail.appendChild(tagTitle);
@@ -60,34 +67,6 @@ const generateComments = () => {
   const comments = document.createElement('div');
   comments.classList.add('comments');
   comments.classList.add('flex-column');
-  commentList.forEach((commentItem) => {
-    const commentCard = document.createElement('div');
-    commentCard.classList.add('comment-card');
-    commentCard.classList.add('flex-column');
-    const commentHeader = document.createElement('div');
-    const date = document.createElement('span');
-    const name = document.createElement('span');
-    const message = document.createElement('div');
-
-    date.classList.add('date');
-    date.textContent = commentItem.creation_date;
-
-    name.classList.add('name');
-    name.textContent = ` | By ${commentItem.username}`;
-
-    commentHeader.classList.add('comment-header');
-    commentHeader.appendChild(date);
-    commentHeader.appendChild(name);
-
-    message.classList.add('message');
-    message.textContent = commentItem.comment;
-
-    commentCard.appendChild(commentHeader);
-    commentCard.appendChild(message);
-
-    comments.appendChild(commentCard);
-  });
-
   return comments;
 };
 
@@ -100,11 +79,12 @@ const generateForm = () => {
   const input = document.createElement('input');
   const textarea = document.createElement('textarea');
   const button = document.createElement('button');
+  const responseMessage = document.createElement('span');
 
   formTitle.classList.add('add-comment-title');
   formTitle.innerText = 'Add Comment';
 
-  input.classList.add('name');
+  input.classList.add('user-name');
   input.classList.add('input');
   input.setAttribute('type', 'text');
   input.setAttribute('placeholder', 'Your name');
@@ -119,7 +99,11 @@ const generateForm = () => {
   button.classList.add('comment-btn');
   button.setAttribute('type', 'button');
   button.innerText = 'Comment';
+  responseMessage.classList.add('response-message');
+  responseMessage.classList.add('hide');
+  div3.classList.add('submit-box');
   div3.appendChild(button);
+  div3.appendChild(responseMessage);
 
   form.classList.add('flex-column');
   form.id = 'add-comment';
@@ -129,6 +113,44 @@ const generateForm = () => {
   form.appendChild(div3);
 
   return form;
+};
+
+export const displayComments = (mealId) => {
+  const commentBox = document.querySelector('.comments');
+  document.querySelectorAll('.comment-card').forEach((comment) => {
+    commentBox.removeChild(comment);
+  });
+  getComment(mealId)
+    .then((response) => {
+      response.forEach((commentItem) => {
+        const commentCard = document.createElement('div');
+        commentCard.classList.add('comment-card');
+        commentCard.classList.add('flex-column');
+        const commentHeader = document.createElement('div');
+        const date = document.createElement('span');
+        const name = document.createElement('span');
+        const message = document.createElement('div');
+
+        date.classList.add('date');
+        date.textContent = commentItem.creation_date;
+
+        name.classList.add('name');
+        name.textContent = ` | By ${commentItem.username}`;
+
+        commentHeader.classList.add('comment-header');
+        commentHeader.appendChild(date);
+        commentHeader.appendChild(name);
+
+        message.classList.add('message');
+        message.textContent = commentItem.comment;
+
+        commentCard.appendChild(commentHeader);
+        commentCard.appendChild(message);
+
+        commentBox.appendChild(commentCard);
+      });
+    })
+    .catch(() => noCommentError());
 };
 
 const generateDetails = (data) => {
@@ -142,7 +164,6 @@ const generateDetails = (data) => {
   detailWrapper.classList.add('detail-wrapper');
   const content1 = generateInfo(data);
   detailWrapper.appendChild(content1);
-  // detailWrapper.appendChild(generateComments(data.idMeal));
   detailWrapper.appendChild(generateComments());
   detailWrapper.appendChild(generateForm());
 
@@ -152,7 +173,7 @@ const generateDetails = (data) => {
   return detailsContainer;
 };
 
-const createCommentPop = (id, data) => {
+export const createCommentPop = (id, data) => {
   let mealData;
   data.forEach((meal) => {
     if (meal.idMeal === id) {
@@ -184,6 +205,7 @@ const createCommentPop = (id, data) => {
   const detailsContainer = generateDetails(mealData);
 
   modalContent.classList.add('modal-content');
+  modalContent.id = id;
   modalContent.appendChild(close);
   modalContent.appendChild(imageContainer);
   modalContent.appendChild(detailsContainer);
@@ -194,5 +216,3 @@ const createCommentPop = (id, data) => {
 
   return modalContainer;
 };
-
-export default createCommentPop;
