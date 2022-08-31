@@ -12,7 +12,7 @@ const showReservations = (e) => {
   popup.style.display = 'flex';
   popup.style.alignItems = 'center';
   popup.style.justifyContent = 'center';
-  popup.style.flexDirection = 'column';
+  popup.style.flexDirection = 'row';
   popup.style.padding = '20px';
   popup.style.borderRadius = '10px';
   popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.3)';
@@ -32,19 +32,26 @@ const showReservations = (e) => {
     const tags = data.meals[0].strTags;
     popup.classList.add('popup');
     popup.innerHTML = `
+    <img class = "popup-Images" src="${mealImage}" alt="Food Image">
     <div class="popup-inner" id="start">
         <article class="popup-header">
-            <h2 class ="mealName">${mealName}</h2>
             <button id="end">close</button>
         </article>
         <article class="popup-body">
-            <img class = "popup-Images" src="${mealImage}" alt="Food Image">
-            <p class = "popup-Tags"> -Tags : ${tags}</p>
-
+            <h2 class ="mealName">${mealName}</h2>
+            <div class="card-tags">
+                <ul class = "popDet">
+                <li>Country : ${data.meals[0].strArea}</li>
+                <li>Catogory : ${data.meals[0].strCategory}</li>
+                </ul>
+                <ul class = "popDet2">
+                <li class = "popup-Tags"> MealTags : ${tags}</li>
+                </ul>
+            </div>
        </article>
        <article class = "popup-footer">
-         <h3 id ="headForm"> Make a Reservation </h3>
             <form class="form-inline" id = "makeRes">
+                 <h3 id ="headForm"> Make a Reservation </h3>
                 <input type="name" class="form-control" placeholder="Your Name" !required></input>
                 <label for="date">Start Date</label>
                 <input type="date" class="form-control" id="start-date" !required></input>
