@@ -42,7 +42,7 @@ const showReservations = (e) => {
             <p class = "popup-Tags"> -Tags : ${tags}</p>
 
        </article>
-       <article class"popup-footer">
+       <article class = "popup-footer">
          <h3 id ="headForm"> Make a Reservation </h3>
          <form class="form-inline">
          <input type="name" class="form-control" placeholder="Your Name"></input>
@@ -55,7 +55,9 @@ const showReservations = (e) => {
     `;
     const currentReservations = document.createElement('ul');
     currentReservations.classList.add('res');
-    popup.appendChild(currentReservations);
+    const form = document.querySelector('.popup-footer');
+    const inner = document.querySelector('.popup-inner')
+    inner.insertBefore(currentReservations, form);
     const url2 = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FXMctN9lLmEpmOxXkx1x/reservations?item_id=${idMeal}`;
     const getRes = async () => {
       const res = await fetch(url2);
@@ -67,12 +69,6 @@ const showReservations = (e) => {
         currentReservations.innerHTML += `
          <li>${item.username} Made a Reservation on ${item.date_start} till ${item.date_end}</li>
         `;
-      } else {
-        currentReservations.innerHTML += `
-            <div class="Throw-Error">
-             <h3> There are no Current Reservations For this Item!</h3>
-             </div>
-             `;
       }
     }));
     const end = document.querySelector('#end');
