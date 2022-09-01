@@ -1,30 +1,39 @@
 import './styles/styles.css';
-import createCommentPop from './module/comment_display_generation.js';
-import getMeals from './module/comment_api_functions.js';
+
 import getData, { postDataLikes, getLikesData, countItem } from './module/data.js';
+import showReservations from './module/reservation.js';
+import { createCommentPop, displayComments } from './module/comment_display_generation.js';
+import { getMeals, postComment } from './module/comment_api_functions.js';
+import { commentAddSuccess, commentAddError } from './module/comment_response_messages.js';
 
 const card = document.querySelector('.list-items .card');
-const data = await getData();
+getData().then((data) => {
+  data.meals.forEach((item) => {
+    card.innerHTML += `
+    <li id="${item.idMeal}">
+          <div class="card-image">
+          <p class = "hideMe">${item.idMeal}</p>
+            <img src="${item.strMealThumb}" alt="${item.strMeal}">
 
-data.meals.forEach((item) => {
-  card.innerHTML += `
-  <li id="${item.idMeal}">
-        <div class="card-image">
-          <img src="${item.strMealThumb}" alt="${item.strMeal}">
-        </div>
-        <div class="card-title">
-          <span><h2>${item.strMeal}</h2></span>
-          <span class="material-symbols-outlined">favorite</span>
-          <span class="like">
-          0 Like
-          </span>
-        </div>
-        <div class="card-footer">
-          <button type="button" class="comment">Comments<button>
-          <button type="button" id="Reserve">Reservations</button>
-        </div>
-      </li>
-  `;
+          </div>
+          <div class="card-title">
+            <span><h2>${item.strMeal}</h2></span>
+            <span class="material-symbols-outlined">favorite</span>
+            <span>0 likes</span>
+          </div>
+          <div class="card-footer">
+            <button type="button" class = "comment">Comments<button>
+            <button class = "Reserve btn btn-primary">Reservations</button>
+          </div>
+        </li>
+    `;
+  });
+  const reservation = document.querySelectorAll('.btn-primary');
+  reservation.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      showReservations(e);
+    });
+  });
 });
 
 const likes = await getLikesData();
@@ -49,9 +58,23 @@ body.addEventListener('click', (event) => {
       .then((response) => {
         const data = response.meals;
         body.appendChild(createCommentPop(mealId, data));
+        displayComments(mealId);
+        const addComment = document.querySelector('.comment-btn');
+        addComment.addEventListener('click', (event) => {
+          event.preventDefault();
+          postComment()
+            .then((response) => {
+              if (response.status === 201) {
+                displayComments(mealId);
+                commentAddSuccess();
+              } else if (response === 0) {
+                commentAddError();
+              }
+            });
+        });
       });
   } else if (event.target.classList.contains('close')) {
-    const commentBox = document.querySelector('dialog');
+    const commentBox = document.querySelector('.modal-container');
     body.removeChild(commentBox);
   }
 });

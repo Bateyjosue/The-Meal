@@ -1,5 +1,5 @@
 const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s';
-const appID = 'lrtXrGQjVDOjVbLsfzj1';
+export const appID = 'lrtXrGQjVDOjVbLsfzj1';
 const baseUrlLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes/`;
 
 const getData = async () => {
