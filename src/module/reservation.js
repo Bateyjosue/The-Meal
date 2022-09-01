@@ -131,7 +131,7 @@ const showReservations = (e) => {
       totalReservationsOnMeal.innerHTML = '<h3> No Reservations On this Meal </h3>';
     } else {
       totalReservationsOnMeal.innerHTML = `
-        <h3>Total Reservations on this Meal : <span class ="Spani">${total}</span></h3>
+        <h3>Reservations : <span class ="Spani">${total}</span></h3>
         `;
     }
     const parentNode = document.querySelector('.popup-inner');

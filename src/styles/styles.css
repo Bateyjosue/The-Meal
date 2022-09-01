@@ -588,7 +588,6 @@ footer {
   overflow-y: auto;
   height: 90px !important;
   list-style-type: disc;
-  background-color: rgba(255, 255, 255, 0.6);
   margin-top: 17px;
 }
 
@@ -597,6 +596,11 @@ footer {
   font-weight: 600;
   color: var(--clr-dark);
   text-align: left;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 2px;
+  padding: 0.8rem;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
 
 .Spani {
@@ -632,10 +636,10 @@ footer {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 768px) {
   .popUp {
-    display: flex !important;
-    flex-direction: column !important;
+    display: flex ;
+    flex-direction: column ;
   }
 
   .popup-Images {
