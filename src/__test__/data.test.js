@@ -9,4 +9,8 @@ describe('ItemCounter', () => {
   it('[2, 5, 6, 5] Should return 4', () => {
     expect(countItem([2, 5, 6, 5])).toEqual([2, 5, 6, 5].length);
   });
+
+  it('Should return zero for no-meal count', () => {
+    expect(countItem([])).toBe(0);
+  });
 });
