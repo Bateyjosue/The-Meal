@@ -1,7 +1,7 @@
 import './styles/styles.css';
 import createCommentPop from './module/comment_display_generation.js';
 import getMeals from './module/comment_api_functions.js';
-import getData, { postDataLikes,getLikesData } from './module/data.js';
+import getData, { postDataLikes, getLikesData } from './module/data.js';
 
 const card = document.querySelector('.list-items .card');
 const data = await getData();
