@@ -2,17 +2,6 @@ const showReservations = (e) => {
   const popup = document.createElement('div');
   document.body.appendChild(popup);
   popup.classList.add('popUp', 'popUpContainer');
-  popup.style.height = '100%';
-  popup.style.width = '100%';
-  popup.style.position = 'fixed';
-  popup.style.top = '0';
-  popup.style.left = '0';
-  popup.style.backgroundColor = '#d3d3d3';
-  popup.style.zIndex = '1';
-  popup.style.display = 'grid';
-  popup.style.borderRadius = '10px';
-  popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.5)';
-  popup.style.overflowY = 'auto';
 
   const idMeal = e.target.parentElement.parentElement.children[0].children[0].innerHTML;
   const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`;

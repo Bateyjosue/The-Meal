@@ -562,9 +562,19 @@ footer {
 }
 
 .popUp {
+  display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0;
   background-color: var(--clr-popBG);
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
 }
 
 .popDet {
@@ -638,8 +648,8 @@ footer {
 
 @media only screen and (max-width: 768px) {
   .popUp {
-    display: flex ;
-    flex-direction: column ;
+    display: flex;
+    flex-direction: column;
   }
 
   .popup-Images {
