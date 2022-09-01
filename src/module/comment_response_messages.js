@@ -10,7 +10,7 @@ export const commentAddSuccess = () => {
     response.classList.add('hide');
     response.classList.remove('green', 'red');
     response.innerHTML = '';
-  }, 5000);
+  }, 1000);
 };
 
 export const commentAddError = () => {
@@ -22,5 +22,5 @@ export const commentAddError = () => {
     response.classList.add('hide');
     response.classList.remove('green', 'red');
     response.innerHTML = '';
-  }, 10000);
+  }, 2000);
 };

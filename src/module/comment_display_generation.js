@@ -61,7 +61,7 @@ const generateComments = (mealId) => {
   const comments = document.createElement('div');
   comments.classList.add('comments', 'flex-column');
   const commentTitle = document.createElement('h2');
-  commentTitle.classList.add('sub-title', 'meal-title');
+  commentTitle.classList.add('sub-title', 'meal-title', 'comment-title');
   getComment(mealId)
     .then((response) => {
       const commentNumber = commentCounter(response);
@@ -115,11 +115,14 @@ const generateForm = () => {
 
 export const displayComments = (mealId) => {
   const commentBox = document.querySelector('.comments');
+  const commentTitle = document.querySelector('.comment-title');
   document.querySelectorAll('.comment-card').forEach((comment) => {
     commentBox.removeChild(comment);
   });
   getComment(mealId)
     .then((response) => {
+      const commentNumber = commentCounter(response);
+      commentTitle.innerHTML = `Comments [${commentNumber}]`;
       response.forEach((commentItem) => {
         const commentCard = document.createElement('div');
         commentCard.classList.add('comment-card', 'flex-column');

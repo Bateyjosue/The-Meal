@@ -404,6 +404,9 @@ footer {
   top: 0;
   right: 0;
   width: 50%;
+  background: #dddddd90;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
 }
 
 .red {
