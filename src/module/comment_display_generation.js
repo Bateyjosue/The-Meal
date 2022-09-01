@@ -16,28 +16,24 @@ const generateInfo = (data) => {
   country.innerHTML = data.strArea;
   countryTitle.classList.add('sub-title');
   countryTitle.innerHTML = 'Country: ';
-  countryData.classList.add('country-data');
-  countryData.classList.add('data');
+  countryData.classList.add('country-data', 'data');
   countryData.appendChild(countryTitle);
   countryData.appendChild(country);
   category.classList.add('category');
   category.innerHTML = data.strCategory;
   categoryTitle.classList.add('sub-title');
   categoryTitle.innerHTML = 'Category: ';
-  categoryData.classList.add('category-data');
-  categoryData.classList.add('data');
+  categoryData.classList.add('category-data', 'data');
   categoryData.appendChild(categoryTitle);
   categoryData.appendChild(category);
-  leftDetail.classList.add('left');
-  leftDetail.classList.add('flex-column');
+  leftDetail.classList.add('left', 'flex-column');
   leftDetail.appendChild(countryData);
   leftDetail.appendChild(categoryData);
 
   const rightDetail = document.createElement('div');
   const tagTitle = document.createElement('span');
   const tags = document.createElement('ul');
-  tagTitle.classList.add('sub-title');
-  tagTitle.classList.add('tag-title');
+  tagTitle.classList.add('sub-title', 'tag-title');
   tagTitle.innerHTML = 'Meal Tags';
   tags.classList.add('tags');
   if (data.strTags === null) {
@@ -52,8 +48,7 @@ const generateInfo = (data) => {
       tags.appendChild(tagList);
     });
   }
-  rightDetail.classList.add('right');
-  rightDetail.classList.add('flex-column');
+  rightDetail.classList.add('right', 'flex-column');
   rightDetail.appendChild(tagTitle);
   rightDetail.appendChild(tags);
 
@@ -65,8 +60,7 @@ const generateInfo = (data) => {
 
 const generateComments = () => {
   const comments = document.createElement('div');
-  comments.classList.add('comments');
-  comments.classList.add('flex-column');
+  comments.classList.add('comments', 'flex-column');
   return comments;
 };
 
@@ -84,14 +78,12 @@ const generateForm = () => {
   formTitle.classList.add('add-comment-title');
   formTitle.innerText = 'Add Comment';
 
-  input.classList.add('user-name');
-  input.classList.add('input');
+  input.classList.add('user-name', 'input');
   input.setAttribute('type', 'text');
   input.setAttribute('placeholder', 'Your name');
   div1.appendChild(input);
 
-  textarea.classList.add('insight');
-  textarea.classList.add('input');
+  textarea.classList.add('insight', 'input');
   textarea.setAttribute('placeholder', 'Your insight');
   textarea.setAttribute('maxlength', '100');
   div2.appendChild(textarea);
@@ -99,8 +91,7 @@ const generateForm = () => {
   button.classList.add('comment-btn');
   button.setAttribute('type', 'button');
   button.innerText = 'Comment';
-  responseMessage.classList.add('response-message');
-  responseMessage.classList.add('hide');
+  responseMessage.classList.add('response-message', 'hide');
   div3.classList.add('submit-box');
   div3.appendChild(button);
   div3.appendChild(responseMessage);
@@ -124,8 +115,7 @@ export const displayComments = (mealId) => {
     .then((response) => {
       response.forEach((commentItem) => {
         const commentCard = document.createElement('div');
-        commentCard.classList.add('comment-card');
-        commentCard.classList.add('flex-column');
+        commentCard.classList.add('comment-card', 'flex-column');
         const commentHeader = document.createElement('div');
         const date = document.createElement('span');
         const name = document.createElement('span');
