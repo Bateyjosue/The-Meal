@@ -15,4 +15,7 @@ describe('Comment Counter', () => {
     commentList.push(newComment);
     expect(commentCounter(commentList)).toBe(4);
   });
+  test('Response with no comment should return zero count', () => {
+    expect(commentCounter([])).toBe(0);
+  });
 });
