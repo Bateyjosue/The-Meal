@@ -462,8 +462,8 @@ footer {
 #headForm {
   text-align: center;
   font-size: 1.5rem;
-  font-weight: bolder;
-  color: #ddd;
+  font-weight: 800;
+  color: var(--clr-Pop-text);
 }
 
 .form-inline {
@@ -472,9 +472,11 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 6rem;
-  padding: 0 0 0.5rem;
+  margin-top: 3rem;
+  padding: 0.5rem 0.2rem 0.2rem 0.5rem ;
+  background-color: rgba(255, 255, 255, 0.6);
 }
+
 
 .form-inline input {
   width: 100%;
@@ -487,7 +489,8 @@ footer {
 
 .form-inline label {
   font-size: 1.2rem;
-  color: #ddd;
+  color: var(--clr-dark);
+  font-weight: 600;
 }
 
 .form-inline button {
@@ -538,7 +541,7 @@ footer {
   padding: 0 0 0.5rem;
   outline: 1px solid #ddd;
   outline-style: dashed;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .card-tags {
@@ -569,7 +572,7 @@ footer {
 .popup-inner{
   background-color: var(--clr-popBG) !important;
   margin-top: 50px;
-  margin-right: 24px;
+  margin-right: 50px;
 }
 .res{
   display: flex;
@@ -593,4 +596,27 @@ footer {
 .Spani{
   color: var(--clr-Pop-text);
   font-weight: 800;
+}
+.mealName{
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--clr-Pop-text);
+}
+.noReservation{
+  color: rgba(255, 0, 0, 0.795);
+  text-align: center;
+  font-weight: 800;
+}
+.endALl{
+  fill: var(--clr-dark);
+  height: 40px;
+}
+.endALl :hover{
+  fill: var(--clr-Pop-text);
+}
+#end{
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
