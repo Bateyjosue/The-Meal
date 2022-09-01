@@ -1,11 +1,13 @@
 import './styles/styles.css';
-import createCommentPop from './module/comment_display_generation.js';
-import getMeals from './module/comment_api_functions.js';
+
 import getData, { postDataLikes, getLikesData, countItem } from './module/data.js';
+import showReservations from './module/reservation.js';
+import { createCommentPop, displayComments } from './module/comment_display_generation.js';
+import { getMeals, postComment } from './module/comment_api_functions.js';
+import { commentAddSuccess, commentAddError } from './module/comment_response_messages.js';
 
 const card = document.querySelector('.list-items .card');
 const data = await getData();
-
 data.meals.forEach((item) => {
   card.innerHTML += `
   <li id="${item.idMeal}">
@@ -24,7 +26,13 @@ data.meals.forEach((item) => {
           <button type="button" id="Reserve">Reservations</button>
         </div>
       </li>
-  `;
+    `;
+});
+const reservation = document.querySelectorAll('.btn-primary');
+reservation.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    showReservations(e);
+  });
 });
 
 const likes = await getLikesData();
@@ -49,9 +57,23 @@ body.addEventListener('click', (event) => {
       .then((response) => {
         const data = response.meals;
         body.appendChild(createCommentPop(mealId, data));
+        displayComments(mealId);
+        const addComment = document.querySelector('.comment-btn');
+        addComment.addEventListener('click', (event) => {
+          event.preventDefault();
+          postComment()
+            .then((response) => {
+              if (response.status === 201) {
+                displayComments(mealId);
+                commentAddSuccess();
+              } else if (response === 0) {
+                commentAddError();
+              }
+            });
+        });
       });
   } else if (event.target.classList.contains('close')) {
-    const commentBox = document.querySelector('dialog');
+    const commentBox = document.querySelector('.modal-container');
     body.removeChild(commentBox);
   }
 });
