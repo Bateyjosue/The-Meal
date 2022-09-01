@@ -549,10 +549,10 @@ footer {
 }
 
 .successMessage {
-  color: #ddd;
-  font-size: 1.2rem;
-  font-weight: bolder;
-  background-color: green;
+  color: green;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: rgba(0, 250, 0, 0.795);
   border-radius: 1rem;
   padding: 0.5rem;
   margin-top: 1rem;
