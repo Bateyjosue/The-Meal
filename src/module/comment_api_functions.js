@@ -1,7 +1,8 @@
-const fetchUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s';
-const apiID = 'FXMctN9lLmEpmOxXkx1x';
+import { appID } from './data.js';
 
-const addCommentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiID}/comments`;
+const fetchUrl = 'https://www.themealdb.com/api/json/v1/1/search.php?s';
+
+const addCommentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments`;
 
 export const getMeals = async () => {
   const request = new Request(fetchUrl);
@@ -35,7 +36,7 @@ export const postComment = async () => {
 };
 
 export const getComment = async (mealID) => {
-  const getCommentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${apiID}/comments?item_id=${mealID}`;
+  const getCommentUrl = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/comments?item_id=${mealID}`;
   const request = new Request(getCommentUrl);
   const response = await fetch(request);
   const responseText = await response.json();
