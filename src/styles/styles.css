@@ -385,16 +385,16 @@ footer {
   padding: 0.5rem 1rem;
   border-radius: 10px;
   border: none;
-  background: #44444450;
+  background: #fff;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
   font-weight: 600;
   transition: all 0.3s ease-in-out;
-  color: #000;
+  color: #ec5242;
 }
 
 .comment-btn:hover {
-  background: #fff;
-  color: #000;
+  background: #ec5242;
+  color: #fff;
   font-weight: bolder;
 }
 
@@ -425,6 +425,13 @@ footer {
 
 .hide-message {
   display: none;
+}
+
+.comment-title,
+.meal-title,
+.add-comment-title {
+  color: #ec5242;
+  padding: 0.5em 0;
 }
 
 @media (max-width: 1000px) {
