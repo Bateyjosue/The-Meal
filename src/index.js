@@ -7,32 +7,31 @@ import { getMeals, postComment } from './module/comment_api_functions.js';
 import { commentAddSuccess, commentAddError } from './module/comment_response_messages.js';
 
 const card = document.querySelector('.list-items .card');
-getData().then((data) => {
-  data.meals.forEach((item) => {
-    card.innerHTML += `
-    <li id="${item.idMeal}">
-          <div class="card-image">
-          <p class = "hideMe">${item.idMeal}</p>
-            <img src="${item.strMealThumb}" alt="${item.strMeal}">
+const data = await getData();
+data.meals.forEach((item) => {
+  card.innerHTML += `
+  <li id="${item.idMeal}">
+        <div class="card-image">
+        <p class = "hideMe">${item.idMeal}</p>
+          <img src="${item.strMealThumb}" alt="${item.strMeal}">
 
-          </div>
-          <div class="card-title">
-            <span><h2>${item.strMeal}</h2></span>
-            <span class="material-symbols-outlined">favorite</span>
-            <span>0 likes</span>
-          </div>
-          <div class="card-footer">
-            <button type="button" class = "comment">Comments<button>
-            <button class = "Reserve btn btn-primary">Reservations</button>
-          </div>
-        </li>
-    `;
-  });
-  const reservation = document.querySelectorAll('.btn-primary');
-  reservation.forEach((item) => {
-    item.addEventListener('click', (e) => {
-      showReservations(e);
-    });
+        </div>
+        <div class="card-title">
+          <span><h2>${item.strMeal}</h2></span>
+          <span class="material-symbols-outlined">favorite</span>
+          <span>0 likes</span>
+        </div>
+        <div class="card-footer">
+          <button type="button" class = "comment">Comments<button>
+          <button class = "Reserve btn btn-primary">Reservations</button>
+        </div>
+      </li>
+  `;
+});
+const reservation = document.querySelectorAll('.btn-primary');
+reservation.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    showReservations(e);
   });
 });
 
