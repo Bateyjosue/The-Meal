@@ -631,3 +631,55 @@ footer {
   outline: none;
   cursor: pointer;
 }
+
+@media only screen and (max-width: 400px) {
+  .popUp {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .popup-Images {
+    height: 200px;
+    width: 100px;
+    justify-self: center;
+    align-self: center;
+    margin-bottom: 4px;
+  }
+
+  #end {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+    margin-top: 20px;
+  }
+
+  #start {
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+    margin-left: 6px !important;
+  }
+
+  .popDet {
+    font-size: 0.9rem;
+  }
+
+  .popup-Tags {
+    font-size: 0.9rem;
+  }
+
+  .res {
+    height: 100px;
+    font-size: 0.8rem;
+  }
+
+  .res li {
+    font-size: 0.8rem;
+  }
+
+  .form-inline {
+    margin-top: 3px !important;
+  }
+}
