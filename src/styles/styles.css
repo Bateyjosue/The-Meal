@@ -1,3 +1,8 @@
+:root {
+  --clr-popBG: #d3d3d3;
+  --clr-dark: #272321;
+  --clr-Pop-text: #ec5242;
+}
 * {
   margin: 0;
   padding: 0;
@@ -511,14 +516,16 @@ footer {
 
 .popup-Images {
   width: auto;
-  height: 300px;
-  border: 15px rgb(255, 0, 72);
+  height: 400px;
   border-radius: 5px;
+  margin-top: 150px;
+  margin-left: 24px;
+  outline: 5px solid var(--clr-Pop-text);
 }
 
 .popup-Tags {
-  color: #ddd;
   font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .popup-body {
@@ -549,4 +556,41 @@ footer {
   border-radius: 1rem;
   padding: 0.5rem;
   margin-top: 1rem;
+}
+.popUp{
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 0;
+  background-color: var(--clr-popBG);
+}
+.popDet{
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.popup-inner{
+  background-color: var(--clr-popBG) !important;
+  margin-top: 50px;
+  margin-right: 24px;
+}
+.res{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  gap: 0.5rem;
+  overflow-y: auto;
+  height: 90px !important;
+  list-style-type: disc;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-top: 17px;
+}
+.res li{
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--clr-dark);
+  text-align: left;
+}
+.Spani{
+  color: var(--clr-Pop-text);
+  font-weight: 800;
 }

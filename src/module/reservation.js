@@ -1,21 +1,17 @@
 const showReservations = (e) => {
   const popup = document.createElement('div');
   document.body.appendChild(popup);
-
+  popup.classList.add('popUp', 'popUpContainer');
   popup.style.height = '100%';
   popup.style.width = '100%';
   popup.style.position = 'fixed';
   popup.style.top = '0';
   popup.style.left = '0';
-  popup.style.backgroundColor = 'rgba(0,0,0,0.3)';
+  popup.style.backgroundColor = '#d3d3d3';
   popup.style.zIndex = '1';
-  popup.style.display = 'flex';
-  popup.style.alignItems = 'center';
-  popup.style.justifyContent = 'center';
-  popup.style.flexDirection = 'row';
-  popup.style.padding = '20px';
+  popup.style.display = 'grid';
   popup.style.borderRadius = '10px';
-  popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.3)';
+  popup.style.boxShadow = '0px 0px 10px rgba(0,0,0,0.5)';
   popup.style.overflowY = 'auto';
 
   const idMeal = e.target.parentElement.parentElement.children[0].children[0].innerHTML;
@@ -131,14 +127,15 @@ const showReservations = (e) => {
     const totalReservationsOnMeal = document.createElement('div');
     totalReservationsOnMeal.classList.add('totalReservationsOnMeal');
     if (total === undefined) {
+      totalReservationsOnMeal.classList.add('noReservation');
       totalReservationsOnMeal.innerHTML = '<h3> No Reservations On this Meal </h3>';
     } else {
       totalReservationsOnMeal.innerHTML = `
-        <h3>Total Reservations on this Meal : ${total}</h3>
+        <h3>Total Reservations on this Meal : <span class ="Spani">${total}</span></h3>
         `;
     }
-    const parentNode = document.querySelector('.popup-body');
-    const refrenceNode = document.querySelector('.card-tags');
+    const parentNode = document.querySelector('.popup-inner');
+    const refrenceNode = document.querySelector('.res');
     parentNode.insertBefore(totalReservationsOnMeal, refrenceNode);
   });
 };
