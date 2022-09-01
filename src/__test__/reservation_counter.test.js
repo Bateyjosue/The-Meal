@@ -1,4 +1,4 @@
-import reservationCounter from '../module/reservation.js';
+import reservationCounter from '../module/mockResCount.js';
 import reservations from '../module/mockApiReservations.js';
 
 describe('reservationCounter', () => {

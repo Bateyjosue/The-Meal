@@ -135,5 +135,5 @@ const showReservations = (e) => {
     parentNode.insertBefore(totalReservationsOnMeal, refrenceNode);
   });
 };
-const reservationCounter = (arr) => (Array.isArray(arr) ? arr.length : 0);
-module.exports = { showReservations, reservationCounter };
+
+module.exports = showReservations;
