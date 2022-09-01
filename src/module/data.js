@@ -9,7 +9,7 @@ const getData = async () => {
 };
 
 export const postDataLikes = async (idMeal) => {
-  const like = { 'item_id': idMeal };
+  const like = { item_id: idMeal };
   const set = await fetch(baseUrlLikes,
     {
       method: 'POST',
