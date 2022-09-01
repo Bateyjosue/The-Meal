@@ -27,4 +27,6 @@ export const getLikesData = async () => {
   return data;
 };
 
+export const countItem = (item) => item.length;
+
 export default getData;
