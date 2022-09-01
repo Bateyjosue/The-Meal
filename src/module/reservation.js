@@ -14,7 +14,7 @@ const showReservations = (e) => {
   lookup.then((data) => {
     const mealName = data.meals[0].strMeal;
     const mealImage = data.meals[0].strMealThumb;
-    const tags = data.meals[0].strTags;
+    const tags = data.meals[0].strTags.split(',');
     popup.classList.add('popup');
     popup.innerHTML = `
     <img class = "popup-Images" src="${mealImage}" alt="Food Image">
@@ -30,7 +30,7 @@ const showReservations = (e) => {
                 <li>Catogory : ${data.meals[0].strCategory}</li>
                 </ul>
                 <ul class = "popDet2">
-                <li class = "popup-Tags"> MealTags : ${tags}</li>
+                 <div class = "popDet2Head">Tags</div>
                 </ul>
             </div>
        </article>
@@ -46,6 +46,13 @@ const showReservations = (e) => {
             </form>
         </article>
     `;
+    const popDet2 = document.querySelector('.popDet2');
+    tags.forEach((tag) => {
+      const li = document.createElement('li');
+      li.innerHTML = tag;
+      popDet2.appendChild(li);
+    });
+
     const currentReservations = document.createElement('ul');
     currentReservations.classList.add('res');
     const form = document.querySelector('.popup-footer');

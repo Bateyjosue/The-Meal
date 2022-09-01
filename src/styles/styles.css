@@ -473,9 +473,10 @@ footer {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 3rem;
-  padding: 0.5rem 0.2rem 0.2rem 0.5rem;
+  margin-top: 0.1rem;
+  padding: 1.6rem;
   background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
 }
 
 .form-inline input {
@@ -483,7 +484,7 @@ footer {
   height: 2rem;
   border: 1px solid #ddd;
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 1.1rem;
   font-size: 1.2rem;
 }
 
@@ -538,10 +539,9 @@ footer {
   justify-content: space-between;
   gap: 0.5rem;
   margin-top: 1rem;
-  padding: 0 0 0.5rem;
-  outline: 1px solid #ddd;
-  outline-style: dashed;
+  padding: 1.4rem;
   background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 15px;
 }
 
 .card-tags {
@@ -577,13 +577,25 @@ footer {
   overflow-y: auto;
 }
 
+.popDet2Head {
+  color: var(--clr-dark);
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-right: 7px;
+  margin-bottom: 7px;
+}
+
+.popDet2 {
+  list-style-type: disc;
+}
+
 .popDet {
   font-size: 1.5rem;
   font-weight: 600;
 }
 
 .popup-inner {
-  background-color: var(--clr-popBG) !important;
+  background-color: var(--clr-popBG);
   margin-top: 50px;
   margin-right: 50px;
 }
@@ -628,6 +640,9 @@ footer {
   color: rgba(255, 0, 0, 0.795);
   text-align: center;
   font-weight: 800;
+  font-size: 1.5rem;
+  position: relative;
+  top: 50px;
 }
 
 .endALl {
