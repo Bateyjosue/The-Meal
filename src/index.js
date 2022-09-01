@@ -1,9 +1,11 @@
 import './styles/styles.css';
-
+import createCommentPop from './module/comment_display_generation.js';
+import getMeals from './module/comment_api_functions.js';
 import getData, { getLikesData } from './module/data.js';
 
 const card = document.querySelector('.list-items .card');
 const data = await getData();
+
 data.meals.forEach((item) => {
   card.innerHTML += `
   <li id="${item.idMeal}">
@@ -36,3 +38,20 @@ span.forEach((sp) => likes.filter((like) => {
   }
   return 0;
 }));
+
+const body = document.querySelector('body');
+
+body.addEventListener('click', (event) => {
+  if (event.target.classList.contains('comment')) {
+    const mealCard = event.target.parentElement.parentElement;
+    const mealId = mealCard.id;
+    getMeals()
+      .then((response) => {
+        const data = response.meals;
+        body.appendChild(createCommentPop(mealId, data));
+      });
+  } else if (event.target.classList.contains('close')) {
+    const commentBox = document.querySelector('dialog');
+    body.removeChild(commentBox);
+  }
+});
