@@ -401,21 +401,20 @@ footer {
 .response-message {
   text-align: center;
   display: block;
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
   background: #dddddd90;
   padding: 0.3rem;
   border-radius: 0.3rem;
+  visibility: hidden;
 }
 
 .red {
   color: red;
+  visibility: visible;
 }
 
 .green {
   color: green;
+  visibility: visible;
 }
 
 .hide-message {

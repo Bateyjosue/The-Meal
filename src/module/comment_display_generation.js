@@ -101,7 +101,6 @@ const generateForm = () => {
   responseMessage.classList.add('response-message', 'hide');
   div3.classList.add('submit-box');
   div3.appendChild(button);
-  div3.appendChild(responseMessage);
 
   form.classList.add('flex-column');
   form.id = 'add-comment';
@@ -109,6 +108,7 @@ const generateForm = () => {
   form.appendChild(div1);
   form.appendChild(div2);
   form.appendChild(div3);
+  form.appendChild(responseMessage);
 
   return form;
 };
