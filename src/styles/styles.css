@@ -3,6 +3,7 @@
   --clr-dark: #272321;
   --clr-Pop-text: #ec5242;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -473,10 +474,9 @@ footer {
   justify-content: center;
   gap: 0.5rem;
   margin-top: 3rem;
-  padding: 0.5rem 0.2rem 0.2rem 0.5rem ;
+  padding: 0.5rem 0.2rem 0.2rem 0.5rem;
   background-color: rgba(255, 255, 255, 0.6);
 }
-
 
 .form-inline input {
   width: 100%;
@@ -560,21 +560,25 @@ footer {
   padding: 0.5rem;
   margin-top: 1rem;
 }
-.popUp{
+
+.popUp {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 0;
   background-color: var(--clr-popBG);
 }
-.popDet{
+
+.popDet {
   font-size: 1.5rem;
   font-weight: 600;
 }
-.popup-inner{
+
+.popup-inner {
   background-color: var(--clr-popBG) !important;
   margin-top: 50px;
   margin-right: 50px;
 }
-.res{
+
+.res {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -587,34 +591,41 @@ footer {
   background-color: rgba(255, 255, 255, 0.6);
   margin-top: 17px;
 }
-.res li{
+
+.res li {
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--clr-dark);
   text-align: left;
 }
-.Spani{
+
+.Spani {
   color: var(--clr-Pop-text);
   font-weight: 800;
 }
-.mealName{
+
+.mealName {
   font-size: 2rem;
   font-weight: 800;
   color: var(--clr-Pop-text);
 }
-.noReservation{
+
+.noReservation {
   color: rgba(255, 0, 0, 0.795);
   text-align: center;
   font-weight: 800;
 }
-.endALl{
+
+.endALl {
   fill: var(--clr-dark);
   height: 40px;
 }
-.endALl :hover{
+
+.endALl :hover {
   fill: var(--clr-Pop-text);
 }
-#end{
+
+#end {
   background: none;
   border: none;
   outline: none;
