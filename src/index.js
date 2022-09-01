@@ -16,7 +16,7 @@ data.meals.forEach((item) => {
           <span><h2>${item.strMeal}</h2></span>
           <span class="material-symbols-outlined">favorite</span>
           <span class="like">
-          0 Like
+            <strong>0</strong> Like
           </span>
         </div>
         <div class="card-footer">
