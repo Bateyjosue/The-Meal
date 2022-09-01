@@ -75,7 +75,7 @@ const showReservations = (e) => {
     getRes().then((res) => res.forEach((item) => {
       if (item) {
         currentReservations.innerHTML += `
-         <li>${item.username} Made a Reservation on ${item.date_start} till ${item.date_end}</li>
+         <li class = "reservations-list">${item.username} Made a Reservation on ${item.date_start} till ${item.date_end}</li>
         `;
       }
     }));
@@ -118,6 +118,28 @@ const showReservations = (e) => {
     end.addEventListener('click', () => {
       document.querySelector('body').removeChild(popup);
     });
+  });
+
+  const url4 = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/FXMctN9lLmEpmOxXkx1x/reservations?item_id=${idMeal}`;
+  const getTotalRes = async () => {
+    const res = await fetch(url4);
+    const info = await res.json();
+    return info;
+  };
+  getTotalRes().then((res) => {
+    const total = res.length;
+    const totalReservationsOnMeal = document.createElement('div');
+    totalReservationsOnMeal.classList.add('totalReservationsOnMeal');
+    if (total === undefined) {
+      totalReservationsOnMeal.innerHTML = '<h3> No Reservations On this Meal </h3>';
+    } else {
+      totalReservationsOnMeal.innerHTML = `
+        <h3>Total Reservations on this Meal : ${total}</h3>
+        `;
+    }
+    const parentNode = document.querySelector('.popup-body');
+    const refrenceNode = document.querySelector('.card-tags');
+    parentNode.insertBefore(totalReservationsOnMeal, refrenceNode);
   });
 };
 module.exports = showReservations;
