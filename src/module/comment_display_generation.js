@@ -1,5 +1,4 @@
-import { getComment } from './comment_api_functions.js';
-import { noCommentError } from './comment_response_messages.js';
+import { commentCounter, getComment } from './comment_api_functions.js';
 
 const generateInfo = (data) => {
   const details = document.createElement('div');
@@ -58,9 +57,17 @@ const generateInfo = (data) => {
   return details;
 };
 
-const generateComments = () => {
+const generateComments = (mealId) => {
   const comments = document.createElement('div');
   comments.classList.add('comments', 'flex-column');
+  const commentTitle = document.createElement('h2');
+  commentTitle.classList.add('sub-title', 'meal-title');
+  getComment(mealId)
+    .then((response) => {
+      const commentNumber = commentCounter(response);
+      commentTitle.innerHTML = `Comments [${commentNumber}]`;
+      comments.appendChild(commentTitle);
+    });
   return comments;
 };
 
@@ -140,7 +147,12 @@ export const displayComments = (mealId) => {
         commentBox.appendChild(commentCard);
       });
     })
-    .catch(() => noCommentError());
+    .catch(() => {
+      const commentCard = document.createElement('div');
+      commentCard.classList.add('comment-card', 'green');
+      commentCard.innerHTML = 'Be the first to make a comment';
+      commentBox.appendChild(commentCard);
+    });
 };
 
 const generateDetails = (data) => {
@@ -154,7 +166,7 @@ const generateDetails = (data) => {
   detailWrapper.classList.add('detail-wrapper');
   const content1 = generateInfo(data);
   detailWrapper.appendChild(content1);
-  detailWrapper.appendChild(generateComments());
+  detailWrapper.appendChild(generateComments(data.idMeal));
   detailWrapper.appendChild(generateForm());
 
   detailsContainer.appendChild(mealTitle);

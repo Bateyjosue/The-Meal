@@ -28,17 +28,3 @@ export const commentAddError = () => {
     response.innerHTML = '';
   }, 10000);
 };
-
-export const noCommentError = () => {
-  const response = document.querySelector('.response-message');
-  response.classList.remove('hide');
-  response.classList.remove('red');
-  response.classList.add('green');
-  response.innerHTML = 'Be the first to make a comment!!!';
-  setTimeout(() => {
-    response.classList.add('hide');
-    response.classList.remove('green');
-    response.classList.remove('red');
-    response.innerHTML = '';
-  }, 5000);
-};

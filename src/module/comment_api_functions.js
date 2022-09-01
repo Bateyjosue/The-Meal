@@ -41,3 +41,5 @@ export const getComment = async (mealID) => {
   const responseText = await response.json();
   return responseText;
 };
+
+export const commentCounter = (arr) => (Array.isArray(arr) ? arr.length : 0);
