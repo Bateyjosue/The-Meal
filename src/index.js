@@ -1,7 +1,7 @@
 import './styles/styles.css';
 import createCommentPop from './module/comment_display_generation.js';
 import getMeals from './module/comment_api_functions.js';
-import getData, { getLikesData } from './module/data.js';
+import getData, { postDataLikes, getLikesData } from './module/data.js';
 
 const card = document.querySelector('.list-items .card');
 const data = await getData();
@@ -31,7 +31,7 @@ const likes = await getLikesData();
 const span = document.querySelectorAll('.like');
 
 span.forEach((sp) => likes.filter((like) => {
-  if (parseInt(sp.parentNode.parentNode.id, 10) === like.item_id) {
+  if (sp.parentNode.parentNode.id === like.item_id) {
     sp.innerHTML = `
       <strong>${like.likes}</strong> Likes
     `;
@@ -54,4 +54,16 @@ body.addEventListener('click', (event) => {
     const commentBox = document.querySelector('dialog');
     body.removeChild(commentBox);
   }
+});
+
+[...card.childNodes].map((li) => {
+  li.addEventListener('click', (e) => {
+    e.preventDefault();
+    postDataLikes(e.target.parentNode.parentNode.id).then((response) => {
+      const lik = e.target.parentElement.lastChild.previousSibling.childNodes[1];
+      lik.innerHTML = parseInt(lik.innerHTML, 10) + 1;
+      return response;
+    });
+  });
+  return 0;
 });

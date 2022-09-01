@@ -1,6 +1,6 @@
 const url = 'https://www.themealdb.com/api/json/v1/1/search.php?s';
 const appID = 'lrtXrGQjVDOjVbLsfzj1';
-const baseUrlLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}`;
+const baseUrlLikes = `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/${appID}/likes/`;
 
 const getData = async () => {
   const response = await fetch(url);
@@ -10,7 +10,7 @@ const getData = async () => {
 
 export const postDataLikes = async (idMeal) => {
   const like = { item_id: idMeal };
-  const set = await fetch(baseUrlLikes,
+  const response = await fetch(`${baseUrlLikes}`,
     {
       method: 'POST',
       body: JSON.stringify(like),
@@ -18,12 +18,11 @@ export const postDataLikes = async (idMeal) => {
         'Content-Type': 'application/json;charset=UTF-8',
       },
     });
-  const result = await set.json();
-  return result;
+  return response;
 };
 
 export const getLikesData = async () => {
-  const response = await fetch(`${baseUrlLikes}/likes/`);
+  const response = await fetch(`${baseUrlLikes}`);
   const data = await response.json();
   return data;
 };
