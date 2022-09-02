@@ -12,6 +12,7 @@ data.meals.forEach((item) => {
   card.innerHTML += `
   <li id="${item.idMeal}">
         <div class="card-image">
+        <p class = "hideMe">${item.idMeal}</p>
           <img src="${item.strMealThumb}" alt="${item.strMeal}">
         </div>
         <div class="card-title">
@@ -23,7 +24,7 @@ data.meals.forEach((item) => {
         </div>
         <div class="card-footer">
           <button type="button" class="comment">Comments<button>
-          <button type="button" id="Reserve">Reservations</button>
+          <button class="Reserve btn btn-primary">Reservations</button>
         </div>
       </li>
     `;
