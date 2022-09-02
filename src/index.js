@@ -14,19 +14,20 @@ data.meals.forEach((item) => {
         <div class="card-image">
         <p class = "hideMe">${item.idMeal}</p>
           <img src="${item.strMealThumb}" alt="${item.strMeal}">
-
         </div>
         <div class="card-title">
           <span><h2>${item.strMeal}</h2></span>
           <span class="material-symbols-outlined">favorite</span>
-          <span>0 likes</span>
+          <span class="like">
+            <strong>0</strong> Like
+          </span>
         </div>
         <div class="card-footer">
-          <button type="button" class = "comment">Comments<button>
-          <button class = "Reserve btn btn-primary">Reservations</button>
+          <button type="button" class="comment">Comments<button>
+          <button class="Reserve btn btn-primary">Reservations</button>
         </div>
       </li>
-  `;
+    `;
 });
 const reservation = document.querySelectorAll('.btn-primary');
 reservation.forEach((item) => {
