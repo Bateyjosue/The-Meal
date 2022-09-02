@@ -96,3 +96,5 @@ const lu = document.querySelector('header ul');
 const li = document.createElement('li');
 li.innerHTML = `Count: ${countItem(data.meals)} Items`;
 lu.appendChild(li);
+
+const btn = document.querySelectorAll('.card-footer button')
