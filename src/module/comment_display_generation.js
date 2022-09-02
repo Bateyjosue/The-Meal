@@ -115,13 +115,13 @@ const generateForm = () => {
 
 export const displayComments = (mealId) => {
   const commentBox = document.querySelector('.comments');
-  const commentTitle = document.querySelector('.comment-title');
   document.querySelectorAll('.comment-card').forEach((comment) => {
     commentBox.removeChild(comment);
   });
   getComment(mealId)
     .then((response) => {
       const commentNumber = commentCounter(response);
+      const commentTitle = document.querySelector('.comment-title');
       commentTitle.innerHTML = `Comments [${commentNumber}]`;
       response.forEach((commentItem) => {
         const commentCard = document.createElement('div');
