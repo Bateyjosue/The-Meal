@@ -135,4 +135,5 @@ const showReservations = (e) => {
     parentNode.insertBefore(totalReservationsOnMeal, refrenceNode);
   });
 };
+
 module.exports = showReservations;
